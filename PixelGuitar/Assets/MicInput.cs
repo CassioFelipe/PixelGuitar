@@ -27,7 +27,7 @@ public class MicInput : MonoBehaviour {
 		}
 
 		//print (getAverageVolume ());
-		//print (GetFundamentalFrequency());
+		print (GetFundamentalFrequency());
 		print (GetNote ());
 	}
 
@@ -44,6 +44,7 @@ public class MicInput : MonoBehaviour {
 	void StartRecording(){
 		TheSource.clip = Microphone.Start (null, true, 300, 44100);
 		while (!(Microphone.GetPosition(null) > 0)) {
+
 		}
 		//TheSource.mute = true;
 		TheSource.PlayOneShot (TheSource.clip);
@@ -68,7 +69,7 @@ public class MicInput : MonoBehaviour {
 			}
 		}
 		fundamentalFrequency = i * samplerate / 8192;
-		if (fundamentalFrequency > 50.0f) {
+		if (fundamentalFrequency > 65.0f) {
 			return fundamentalFrequency;
 		} else {
 			return 0;
@@ -85,7 +86,7 @@ public class MicInput : MonoBehaviour {
 		if (Freq == 201)
 			return "D3";
 
-		if (Freq == 75)
+		if (Freq > 110 && Freq < 118)
 			return "E2";
 
 		if (Freq == 43.65)
